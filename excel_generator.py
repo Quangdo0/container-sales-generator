@@ -685,17 +685,17 @@ def read_xuat_kho_items_by_k(source_wb, k_stt: str, run_date: date):
 def read_containers_for_date(source_file: Path, run_date: date, tracking_map: dict):
     source_wb = load_workbook(source_file, data_only=True)
 
-    k_list = get_k_list_for_export_date(source_wb, run_date)
+    k_list = get_k_list_from_xuat_kho_for_export_date(source_wb, run_date)
 
     print(f"DEBUG K LIST FROM REPORT: {k_list}")
 
-    if not k_list:
-        print("WARNING: Không tìm thấy K list trong BÁO CÁO KHO TỔNG HỢP.")
-        print("Trying fallback: scan K list from sheet Xuất kho...")
+    # if not k_list:
+    #     print("WARNING: Không tìm thấy K list trong BÁO CÁO KHO TỔNG HỢP.")
+    #     print("Trying fallback: scan K list from sheet Xuất kho...")
 
-        k_list = get_k_list_from_xuat_kho_for_export_date(source_wb, run_date)
+    #     k_list = get_k_list_from_xuat_kho_for_export_date(source_wb, run_date)
 
-        print(f"DEBUG K LIST FROM XUẤT KHO: {k_list}")
+    #     print(f"DEBUG K LIST FROM XUẤT KHO: {k_list}")
 
     if not k_list:
         print(f"WARNING: Không tìm thấy chuyến K nào cho ngày {run_date.strftime('%d/%m/%Y')}")
