@@ -16,7 +16,7 @@ st.set_page_config(
 st.title("📦 Container Sales Sheet Generator")
 
 st.write(
-    "Upload the 3 Excel files, choose an export date, then generate the sales sheets automatically."
+    "Upload 3 Excel files, chọn ngày vận chuyển, tạo mẫu theo yêu cầu."
 )
 
 st.warning(
@@ -42,40 +42,40 @@ if APP_PASSWORD:
 st.subheader("1. Upload Excel files")
 
 target_file = st.file_uploader(
-    "Target sales Excel file",
+    "File mẫu",
     type=["xlsx"],
     help="Upload the sales form/template Excel.",
 )
 
 source_file = st.file_uploader(
-    "Source report Excel file",
+    "Báo cáo kho tổng hợp",
     type=["xlsx"],
     help="Upload the report file that contains Xuất kho and Báo cáo kho tổng hợp sheets.",
 )
 
 tracking_file = st.file_uploader(
-    "Tracking container Excel file",
+    "Container van chuyen",
     type=["xlsx"],
     help="Upload the tracking file that contains KK / truck / container / trailer data.",
 )
 
 
-st.subheader("2. Choose export date")
+st.subheader("2. Ngày vận chuyển")
 
 selected_date = st.date_input(
-    "Export date",
+    "Ngày vận chuyển",
     value=date.today(),
     format="DD/MM/YYYY",
 )
 
 run_date_text = selected_date.strftime("%d/%m/%Y")
 
-st.info(f"Selected export date: {run_date_text}")
+st.info(f"Chọn ngày vận chuyển: {run_date_text}")
 
 
-st.subheader("3. Generate Excel")
+st.subheader("3. Xuất file Excel")
 
-generate_button = st.button("Generate Excel", type="primary")
+generate_button = st.button("Xuất file Excel", type="primary")
 
 
 if generate_button:
